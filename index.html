@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix - Filmes, Séries e Animes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E50914;
+            --bg: #080808;
+            --surface: #141414;
+            --text: #FFFFFF;
+            --gray: #B3B3B3;
+            --telegram: #0088cc;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+        
+        header { 
+            padding: 20px 5%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            position: absolute;
+            top: 0; width: 100%; z-index: 10;
+        }
+        .logo { 
+            font-size: 22px; 
+            font-weight: 700; 
+            color: var(--primary); 
+            letter-spacing: 1px; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        .logo img { width: 45px; border-radius: 12px; box-shadow: 0 4px 10px rgba(229,9,20,0.3); }
+
+        .hero { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 120px 5% 60px; 
+            min-height: 100vh; 
+            flex-wrap: wrap; 
+            gap: 50px;
+            background: radial-gradient(circle at top right, #2a0000 0%, var(--bg) 50%);
+        }
+        
+        .hero-text { flex: 1; min-width: 320px; max-width: 600px; }
+        .hero-text h1 { font-size: 3.2rem; margin-bottom: 20px; line-height: 1.1; font-weight: 700; }
+        .hero-text h1 span { color: var(--primary); }
+        .hero-text p { font-size: 1.15rem; color: var(--gray); margin-bottom: 30px; line-height: 1.6; }
+        
+        .activation-box {
+            background: rgba(229, 9, 20, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 35px;
+        }
+        .activation-box h3 { font-size: 1rem; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+        .activation-box p { font-size: 0.9rem; margin-bottom: 0; color: #ddd; }
+
+        .buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn { 
+            padding: 16px 32px; 
+            border-radius: 50px; 
+            font-size: 1rem; 
+            font-weight: 600; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 10px; 
+            transition: all 0.3s ease; 
+            border: none; 
+            cursor: pointer; 
+        }
+        .btn-primary { 
+            background-color: var(--primary); 
+            color: white; 
+            box-shadow: 0 4px 20px rgba(229, 9, 20, 0.4); 
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(229, 9, 20, 0.6); }
+        
+        .btn-telegram { 
+            background-color: #1a1a1a; 
+            color: white; 
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-telegram:hover { background-color: var(--telegram); border-color: var(--telegram); transform: translateY(-3px); }
+        
+        .hero-image { flex: 1; display: flex; justify-content: center; min-width: 320px; position: relative; }
+        .phone-mockup { 
+            width: 290px; 
+            border-radius: 35px; 
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7); 
+            border: 10px solid #1f1f1f;
+            transition: transform 0.5s ease;
+        }
+        .phone-mockup:hover { transform: translateY(-10px); }
+
+        .features { padding: 80px 5%; background: var(--surface); text-align: center; }
+        .features h2 { font-size: 2.2rem; margin-bottom: 50px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--bg); padding: 40px 30px; border-radius: 20px; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: white; }
+        .card p { color: var(--gray); font-size: 0.95rem; line-height: 1.5; }
+
+        .gallery { padding: 80px 5%; text-align: center; }
+        .gallery h2 { margin-bottom: 50px; font-size: 2.2rem; }
+        .gallery-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .gallery-grid img { 
+            width: 220px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 4px solid var(--surface); 
+            object-fit: cover; 
+            transition: 0.3s;
+        }
+        .gallery-grid img:hover { transform: scale(1.05); border-color: var(--primary); }
+
+        footer { padding: 40px; text-align: center; color: var(--gray); border-top: 1px solid rgba(255,255,255,0.05); background: var(--surface); }
+
+        @media(max-width: 768px) {
+            .hero { padding-top: 100px; text-align: center; }
+            .hero-text h1 { font-size: 2.4rem; }
+            .activation-box { text-align: left; border-radius: 8px; border-left: none; border-top: 4px solid var(--primary); }
+            .buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+            .phone-mockup { width: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <!-- NOME ATUALIZADO: logo.png -->
+            <img src="logo.png" alt="Ícone StreamFlix">
+            STREAMFLIX
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>O Seu Universo de <span>Entretenimento</span></h1>
+            <p>Filmes, séries, TV ao vivo, animes e doramas com a melhor qualidade, direto no seu celular. Interface rápida, leve e feita para você.</p>
+            
+            <div class="activation-box">
+                <h3>⚠️ Importante: Código de Ativação</h3>
+                <p>O acesso ao app é fechado. Baixe o APK e entre no nosso grupo do Telegram para resgatar o seu código de ativação gratuito.</p>
+            </div>
+
+            <div class="buttons">
+                <a href="http://bgdv.online/kmgx8y" class="btn btn-primary" download>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Baixar App (APK)
+                </a>
+                <a href="https://t.me/streamflixofc" class="btn btn-telegram" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    Pegar Código no Telegram
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-image">
+            <!-- NOME ATUALIZADO: tela-inicial.jpg -->
+            <img src="tela-inicial.jpg" alt="Interface Home do StreamFlix" class="phone-mockup">
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Tudo em um só lugar</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🎬 Filmes & Séries</h3>
+                <p>Catálogo atualizado com os últimos lançamentos e as séries mais aclamadas.</p>
+            </div>
+            <div class="card">
+                <h3>📺 TV ao Vivo</h3>
+                <p>Acesse canais abertos e fechados para não perder nenhum evento ou jornal.</p>
+            </div>
+            <div class="card">
+                <h3>⛩️ Animes & Doramas</h3>
+                <p>Conteúdo oriental dedicado com legendas e dublagens de alta qualidade.</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Design Otimizado</h3>
+                <p>Aplicativo leve que não trava e carrega os players de forma quase instantânea.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <h2>Conheça a Interface</h2>
+        <div class="gallery-grid">
+            <!-- NOMES ATUALIZADOS -->
+            <img src="tela-abertura.jpg" alt="Tela de Abertura">
+            <img src="tela-inicial.jpg" alt="Tela Inicial">
+            <img src="tela-carregamento.jpg" alt="Tela de Carregamento">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 StreamFlix. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

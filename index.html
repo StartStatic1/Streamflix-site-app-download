@@ -113,9 +113,9 @@
 
         .gallery { padding: 80px 5%; text-align: center; }
         .gallery h2 { margin-bottom: 50px; font-size: 2.2rem; }
-        .gallery-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .gallery-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .gallery-grid img { 
-            width: 220px; 
+            width: 200px; /* Reduzido levemente para caber 4 imagens melhor */
             border-radius: 20px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border: 4px solid var(--surface); 
@@ -133,6 +133,7 @@
             .buttons { flex-direction: column; width: 100%; }
             .btn { width: 100%; }
             .phone-mockup { width: 250px; }
+            .gallery-grid img { width: 180px; }
         }
     </style>
 </head>
@@ -140,7 +141,6 @@
 
     <header>
         <div class="logo">
-            <!-- NOME ATUALIZADO: logo.png -->
             <img src="logo.png" alt="Ícone StreamFlix">
             STREAMFLIX
         </div>
@@ -169,7 +169,6 @@
         </div>
         
         <div class="hero-image">
-            <!-- NOME ATUALIZADO: tela-inicial.jpg -->
             <img src="tela-inicial.jpg" alt="Interface Home do StreamFlix" class="phone-mockup">
         </div>
     </section>
@@ -199,9 +198,10 @@
     <section class="gallery">
         <h2>Conheça a Interface</h2>
         <div class="gallery-grid">
-            <!-- NOMES ATUALIZADOS -->
             <img src="tela-abertura.jpg" alt="Tela de Abertura">
             <img src="tela-inicial.jpg" alt="Tela Inicial">
+            <!-- NOVA IMAGEM ADICIONADA AQUI 👇 -->
+            <img src="tela-tv.jpg" alt="Canais de TV ao Vivo">
             <img src="tela-carregamento.jpg" alt="Tela de Carregamento">
         </div>
     </section>
